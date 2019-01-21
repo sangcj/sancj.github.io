@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" addBOMForNewFiles="with NO BOM">
+    <file url="file://$PROJECT_DIR$/static/blogsec/css" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/static/blogsec/images" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/static/blogsec/js" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/templates/blogsec/gbook.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/templates/blogsec/info.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/templates/blogsec/life.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/templates/blogsec/list.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/templates/blogsec/share.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/templates/blogsec/time.html" charset="UTF-8" />
+  </component>
+</project>
