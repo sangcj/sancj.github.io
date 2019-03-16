@@ -1,0 +1,203 @@
+<head>
+	<meta charset="utf-8">
+	<meta name="baidu-site-verification" content="ucoHEaVHET" />
+	<title>飞常准|航班延误短信通知,准点信息,航班动态,航班跟踪客户端,航班和机场延误查询,飞行旅客的航班管家, 让世界更准点</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="keywords" content="航班动态,航班状态,航班动态跟踪,航班延误,航班准点,跟踪航班动态,航班延误查询,航班动态实时查询"/>
+	<meta name="description" content="飞常准（Variflight.com）是全球领先的航班数据服务公司, 帮飞行旅客提供跟踪航班动态查询航班状态、延误智能预报、航班点评等专业性功能，为携程去哪儿途牛同程春秋航空机票购买用户提供航班行程查询，为商旅用户提供贴心便捷的旅行服务，为机场、空管提供ACDM，保障航班正常"/>
+	<meta name="baidu-site-verification" content="1Sfs5p7h72"/>
+	<meta name="360-site-verification" content="db5186c019ef79035320330aa2aa63ff" />
+	<link rel="stylesheet" href="http://www.variflight.com/_newstatic/dest/css/jquery.autocomplete.css?v=4185cefa5cd0ca9f17d1810f22ebf8dc">
+	<link rel="stylesheet" href="http://www.variflight.com/_newstatic/dest/css/widget_new.css?v=5243035bef257df3150df13b7ca39a48">
+{#	<link rel="stylesheet" href="http://www.variflight.com/_newstatic/dest/css/index_new.css?v=089f0501698bafd51c1fb7ad88778867">#}
+	<link rel="stylesheet" href="/static/css/index.css">
+	<link rel="stylesheet" href="http://www.variflight.com/_newstatic/dest/css/float.css?v=2e0a1cf92539230d3e1d38fa47b38e34">
+	<link rel="stylesheet" href="http://www.variflight.com/_newstatic/dest/css/datePicker.css?v=beb60d00166d80417f275dceae4a8e13">
+	<link rel="stylesheet" href="http://www.variflight.com/_newstatic/dest/css/ui-dialog.css?v=9cca6f24705fbbce24ad984849c0d542">
+	<link rel="stylesheet" href="http://www.variflight.com/_newstatic/dest/css/personCenter.css?v=009bf080e1443c234f85d837aabbf4a1">
+	<link rel="stylesheet" href="http://www.variflight.com/_newstatic/dest/css/downApp.css?v=ff22f28b6ccf1317d59840339769f9a1">
+	<link rel="stylesheet" href="http://www.variflight.com/_newstatic/dest/css/sundries.css?v=7b3e6fb949e6c4c00499f6422eccbe8f">
+	<link rel="stylesheet" href="http://www.variflight.com/_newstatic/css/aboutme.css?">
+	<link rel="stylesheet" href="http://www.variflight.com/_newstatic/dest/css/base.css?v=c9b9370278ea794d123532420fd5001b">
+{#	<link rel="shortcut icon" href="http://www.variflight.com/_newstatic/dest/img/favicon.ico"/>#}
+{#	<script src="http://www.variflight.com/_newstatic/dest/js/jquery.min.js?v=4120ccfc56e7f1ecf04823ab8d0062dc"></script>#}
+{#	<script src="http://www.variflight.com/_newstatic/dest/js/countryCode.js?v=cd7ff69153103daf5ec8a59309dbaf1e"></script>#}
+</head>
+<body>
+<div class="f_content">
+    <!-- 搜索条 -->
+<div class="fly_Search" id="fly_Search_scroll">
+    <div class="stopMain clearfix l_stopMain" style="padding: 30px 0 30px 10px;">
+        <div class="toggle_person left searchBarTog">
+            <input type="hidden" value="2019" id="friendYear">
+            <a href="javascript:;" id="friendOrder" class="toggleA byNum " role="friend" title="按航班号">按航班号</a>
+            <a href="javascript:;" id="myOrder" class="toggleA byCity on" role="self" title="按起降地">按起降地</a>
+            <span class="toggleSpan searchBarTogSpan" style="left:142px"></span>
+        </div>
+        <div id="byNum" class="left" style="display:none;">
+            <label class="byNumLabel left">
+                <input id="byNumInput" onclick="search_input_focus(this)" name="byNumInput" type="text" class="bor" maxlength="10" placeholder="请输入航班号，如CA111或1111" autocomplete="off" value="">
+                <div id="codeFilterBox">
+                    <ul></ul>
+                    <p>暂无历史航段记录</p>
+                </div>
+            </label>
+            <label class="container datepicker_r left">
+                <div class="text">出发时间</div>
+                <span class="datepic"></span>
+                <input type="text" maxlength="10" id="numDatepicker" value="2019-03-15" class="index_date" readonly="">
+                <div class="clear"></div>
+            </label>
+            <p class="left">
+                <input id="byNumBtn" name="byNumBtn" type="button" class="y-btn-grey y-btn-greyL" value="查&nbsp;询">
+            </p>
+        </div>
+        <form class="info" method="post">
+            {% csrf_token %}
+            <div id="byCity" class="left" style="display:block;">
+            <div class="Citylabel left">
+{#                <input type="text" placeholder="出发城市" maxlength="20" onclick="search_input_focus(this)" onblur="search_input_blur()" class="bor autocomplete ac_input" data-id="dep_city" id="dep_city" style="color:#000" value="成都双流" autocomplete="off">#}
+                <input type="text" placeholder="出发城市" name="dep" maxlength="20" onclick="search_input_focus(this)" onblur="search_input_blur()" class="bor autocomplete ac_input" data-id="dep_city" id="dep_city" style="color:#000" value="成都双流" autocomplete="off">
+                <div class="change" id="changeCity"></div>
+                <!--点击切换始发地,换change2-->
+{#                <input type="text" placeholder="到达城市" maxlength="20" onclick="search_input_focus(this)" onblur="search_input_blur()" class="bor autocomplete ac_input" data-id="arr_city" id="arr_city" style="color:#000" value="重庆江北" autocomplete="off">#}
+                <input type="text" placeholder="到达城市" name="arr" maxlength="20" onclick="search_input_focus(this)" onblur="search_input_blur()" class="bor autocomplete ac_input" data-id="arr_city" id="arr_city" style="color:#000" value="重庆江北" autocomplete="off">
+            </div>
+            <label class="container left datepicker_l">
+                <div class="text">出发时间</div>
+                <span class="datepic"></span>
+{#                <input type="text" maxlength="10" id="cityDatepicker" value="2019-03-15" class="index_date" readonly="">#}
+{#                <input type="text" maxlength="10" id="cityDatepicker" value="2019-03-15" class="index_date">#}
+                <input type="text" maxlength="10" name="time" id="cityDatepicker" value="2019-03-15" class="index_date">
+                <div class="clear"></div>
+            </label>
+            <p class="left">
+{#                <input id="byCityBtn" name="byCityBtn" type="submit" class="y-btn-grey y-btn-greyL" value="2019-02-01">#}
+                <input id="byCityBtn" name="byCityBtn" type="submit" class="y-btn-grey y-btn-greyL" value="查&nbsp&nbsp&nbsp询" onclick="submitAction();return false;">
+            </p>
+        </div>
+        </form>
+    </div>
+</div>
+<!-- 搜索列表页 -->
+<div class="fly_list">
+	<div class="tit">
+		<h1 title="成都双流---重庆江北">
+            成都双流---重庆江北
+            <span>3月15号周五 共2次航班</span>
+		</h1>
+	</div>
+	<div class="li_box" id="li_box">
+		<div class="t_tit" id="t_tit">
+			<p class="w260">航班信息</p>
+			<p class="w150">计划起飞</p>
+			<p class="w150">实际起飞</p>
+			<p class="w150">出发地</p>
+			<p class="w150">计划到达</p>
+			<p class="w150">实际到达</p>
+			<p class="w150">到达地</p>
+			<p class="w150">准点率</p>
+			<p class="w150">状态</p>
+			<p class="w150">订制</p>
+			<div class="clear"></div>
+		</div>
+		<ul id="list">
+			<li style="position: relative;">
+				<a class="searchlist_innerli" href="/schedule/CTU-CKG-G52726.html?AE71649A58c77="></a>
+                <div class="li_com">
+                    <span class="w260">
+{#                        <img onerror="javascript:this.src='/_newstatic/dest/img/default.png'" src="http://pic.veryzhun.com/assets/image/aircorp/g5.png" width="22" height="22" align="华夏航空">#}
+                        <b>
+                            <a href="javascript:void(0);" title="华夏航空">华夏航空</a>
+                            <a href="javascript:void(0);" title="G52726">G52726</a>
+                        </b>
+                    </span>
+
+                    <span class="w150" dplan="16:55">
+                        16:55
+                    </span>
+
+                    <span class="w150 randEle">
+                        <img src="/flight/detail/productImg&amp;s=amQyUUhWTm02bGVaM3pQUE93VDd6anFxQ0JjPQ==&amp;w=50&amp;h=28&amp;fontSize=13&amp;fontColor=2f3032&amp;background=ffffff?AE71649A58c77=">
+                    </span>
+
+                    <span class="w150">成都双流T2</span>
+
+                    <span class="w150" aplan="22:20">
+							22:20
+                    </span>
+
+                    <span class="w150 randEle">
+                        --
+                    </span>
+                    <span class="w150">重庆江北T2A</span>
+                    <!-- 准点率 -->
+                    <span class="w150">
+                        <img src="/flight/detail/productImg&amp;s=cTNlSWliYkxNUVhkd0l1ZjE2N0o0dVBjRHNCcjdYV2w=&amp;w=63&amp;h=28&amp;fontSize=13&amp;fontColor=2f3032&amp;background=ffffff?AE71649A58c77=">
+                    </span>
+                    <span class="w150 blu_cor">起飞</span>
+                    <span class="fob">
+                        <a class="showOrderBtn" href="/follow/G52726.html?AE71649A58c77=&amp;dplan=16%3A55&amp;depCity=%E6%88%90%E9%83%BD%E5%8F%8C%E6%B5%81T2&amp;aplan=22%3A20&amp;arrCity=%E9%87%8D%E5%BA%86%E6%B1%9F%E5%8C%97T2A&amp;fdate=2019-03-15&amp;depCode=CTU&amp;arrCode=CKG" style="display:none; z-index:6;position: relative;" target="_blank">[订制航班]</a>
+                        <a class="hideOrderBtn" href="javascript:;" style="display:inline-block; z-index:6;position: relative;" onclick="checkLogin(this)">[订制航班]</a>
+                    </span>
+						<div class="clear"></div>
+                </div>
+            </li>
+		</ul>
+	</div>
+</div>
+</div>
+    <script>
+        $(document).ready(function() {
+        $(".info").submit(function(e){
+            e.preventDefault();
+            dep = $("#dep_city").val();
+            arr = $("#arr_city").val();
+            time = $("#cityDatepicker").val();
+            // console.log(mobile, passwd);
+            {#if (!dep) {#}
+            {#    $("#mobile-err span").html("请填写正确的手机号！");#}
+            {#    $("#mobile-err").show();#}
+            {#    return;#}
+            {#}#}
+            {#if (!passwd) {#}
+            {#    $("#password-err span").html("请填写密码!");#}
+            {#    $("#password-err").show();#}
+            {#    return;#}
+            {#}#}
+            $.ajax({
+                url: '/fcz_plane/search/',
+                type: 'POST',
+                dataType: 'json',
+                data: {'dep': dep, 'arr': arr, 'time': time},
+                success:function (data) {
+                    if(data.code == '1006'){
+                        $("#password-err span").html(data.msg);
+                        $("#password-err").show();
+                    }
+                    if(data.code == '1007'){
+                         $("#mobile-err span").html(data.msg);
+                         $("#mobile-err").show();
+                    }
+                    if(data.code == '1008'){
+                        $("#mobile-err span").html(data.msg);
+                        $("#mobile-err").show();
+                    }
+                    if(data.code == '1009'){
+                        $("#password-err span").html(data.msg);
+                        $("#password-err").show();
+                    }
+                    if(data.code == '200'){
+                        {#location.href = '/user/my/'#}
+                        console.log('success')
+                    }
+                },
+                error:function (data) {
+
+                }
+            })
+        });
+    });
+</script>
+</body>

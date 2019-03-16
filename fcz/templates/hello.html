@@ -1,0 +1,19 @@
+{% load i18n %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>国际化测试</title>
+</head>
+<body>
+    {% trans '你个瓜娃子' %}
+    {% blocktrans %}
+        '有道翻译提供即时免费的中文、
+        英语、日语、韩语、法语、德语、
+        俄语、西班牙语、葡萄牙语、越南语、
+        印尼语全文翻译、网页翻译、文档翻译服务'
+    {% endblocktrans %}
+</body>
+</html>

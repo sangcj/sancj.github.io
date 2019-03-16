@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>成都航班统计</title>
+    <!-- 引入 echarts.js -->
+    <script src="/static/js/echarts.min.js"></script>
+    <script src="/static/js/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <div id="main" style="width: 1600px;height:600px;"></div>
+    <script type="text/javascript">
+
+        <!-- alert(json_data) -->
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+            // 使用刚指定的配置项和数据显示图表。
+        $.ajax({
+            url: '/get_data/',
+            type: 'GET',
+            dataType: 'json',
+            success: function(data){
+                option = {
+                        title : {
+                            text: '成都航班起降',
+                            subtext: '2019-1-11'
+                        },
+                        tooltip : {
+                            trigger: 'axis'
+                        },
+                        legend: {
+                            data:['成都出发','到达成都']
+                        },
+                        //xAxis : {
+                            // nameRotate : 90,
+                        //},
+                        toolbox: {
+                            show : true,
+                            feature : {
+                                dataView : {show: true, readOnly: false},
+                                magicType : {show: true, type: ['line', 'bar']},
+                                restore : {show: true},
+                                saveAsImage : {show: true}
+                            }
+                        },
+                        calculable : true,
+                        xAxis : [
+                            {
+                                type : 'category',
+                                axisLabel : {
+                                        rotate: 90,
+                                        interval: 0,
+                                        fontSize: 8,
+                                        },
+                                data : data.data['city_list']
+                            }
+                        ],
+                        yAxis : [
+                            {
+                                type : 'value'
+                            }
+                        ],
+                        series : [
+                            {
+                                name:'成都出发',
+                                type:'bar',
+                                data:data.data['dep_from_CTU'],
+                                markPoint : {
+                                    data : [
+                                        {type : 'max', name: '最大值'},
+                                        {type : 'min', name: '最小值'}
+                                    ]
+                                },
+                                markLine : {
+                                    data : [
+                                        {type : 'average', name: '平均值'}
+                                    ]
+                                }
+                            },
+                            {
+                                name:'到达成都',
+                                type:'bar',
+                                data:data.data['arr_to_CTU'],
+                                markPoint : {
+                                    data : [
+                                        {type : 'max', name: '最大值'},
+                                        {type : 'min', name: '最小值'}
+                                    ]
+                                },
+                                markLine : {
+                                    data : [
+                                        {type : 'average', name : '平均值'}
+                                    ]
+                                }
+                            }
+                        ]
+                    };
+                    // 使用刚指定的配置项和数据显示图表。
+                    myChart.setOption(option);
+
+            },
+            error: function(data){
+                alert('错误')
+            },
+        });
+
+
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="utf-8">
+	<meta name="baidu-site-verification" content="ucoHEaVHET" />
+	<title>飞常准|航班延误短信通知,准点信息,航班动态,航班跟踪客户端,航班和机场延误查询,飞行旅客的航班管家, 让世界更准点</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="keywords" content="航班动态,航班状态,航班动态跟踪,航班延误,航班准点,跟踪航班动态,航班延误查询,航班动态实时查询"/>
+	<meta name="description" content="飞常准（Variflight.com）是全球领先的航班数据服务公司, 帮飞行旅客提供跟踪航班动态查询航班状态、延误智能预报、航班点评等专业性功能，为携程去哪儿途牛同程春秋航空机票购买用户提供航班行程查询，为商旅用户提供贴心便捷的旅行服务，为机场、空管提供ACDM，保障航班正常"/>
+	<meta name="baidu-site-verification" content="1Sfs5p7h72"/>
+	<meta name="360-site-verification" content="db5186c019ef79035320330aa2aa63ff" />
+	<link rel="stylesheet" href="http://www.variflight.com/_newstatic/dest/css/jquery.autocomplete.css?v=4185cefa5cd0ca9f17d1810f22ebf8dc">
+	<link rel="stylesheet" href="http://www.variflight.com/_newstatic/dest/css/widget_new.css?v=5243035bef257df3150df13b7ca39a48">
+	<link rel="stylesheet" href="http://www.variflight.com/_newstatic/dest/css/index_new.css?v=089f0501698bafd51c1fb7ad88778867">
+	<link rel="stylesheet" href="/static/css/index.css">
+	<link rel="stylesheet" href="http://www.variflight.com/_newstatic/dest/css/float.css?v=2e0a1cf92539230d3e1d38fa47b38e34">
+	<link rel="stylesheet" href="http://www.variflight.com/_newstatic/dest/css/datePicker.css?v=beb60d00166d80417f275dceae4a8e13">
+	<link rel="stylesheet" href="http://www.variflight.com/_newstatic/dest/css/ui-dialog.css?v=9cca6f24705fbbce24ad984849c0d542">
+	<link rel="stylesheet" href="http://www.variflight.com/_newstatic/dest/css/personCenter.css?v=009bf080e1443c234f85d837aabbf4a1">
+	<link rel="stylesheet" href="http://www.variflight.com/_newstatic/dest/css/downApp.css?v=ff22f28b6ccf1317d59840339769f9a1">
+	<link rel="stylesheet" href="http://www.variflight.com/_newstatic/dest/css/sundries.css?v=7b3e6fb949e6c4c00499f6422eccbe8f">
+	<link rel="stylesheet" href="http://www.variflight.com/_newstatic/css/aboutme.css?">
+	<link rel="stylesheet" href="http://www.variflight.com/_newstatic/dest/css/base.css?v=c9b9370278ea794d123532420fd5001b">
+	<link rel="shortcut icon" href="http://www.variflight.com/_newstatic/dest/img/favicon.ico"/>
+	<script src="http://www.variflight.com/_newstatic/dest/js/jquery.min.js?v=4120ccfc56e7f1ecf04823ab8d0062dc"></script>
+	<script src="http://www.variflight.com/_newstatic/dest/js/countryCode.js?v=cd7ff69153103daf5ec8a59309dbaf1e"></script>
+	<script>
+		var currentModule     = "flight";
+		var currentController = "index";
+		var currentAction     = "index";
+	</script>
+	<style>
+		.single:before{content: '';display: block;width: 0;height: 0;border-left: 5px solid transparent;border-right: 5px solid transparent;border-top: 6px solid #999999;position: absolute;right: 10px;top: 28px;}
+	</style>
+</head>
+    <div class="f_content" style="background:#88b7e4;width:100%;">
+    <!-- 恢复了？ -->
+    <div class="big_BG" style=" background:url(http://www.variflight.com/_newstatic/img/indexBg_new.jpg) no-repeat 50% 0;">
+                <div class="fySearch">
+                    <div class="stopImg">
+                        <p class="mt">Living on time</p>
+                        <p class="mc">精准可靠的航班动态数据服务</p>
+                    </div>
+                    <div class="stopMain clearfix">
+                        <div class="toggle_person left searchBarTog">
+                            <input type="hidden" value="2019" id="friendYear"/>
+                            <a href="javascript:;" id="friendOrder" class="toggleA on byNum" role="friend" title="按航班号">按航班号</a>
+                            <a href="javascript:;" id="myOrder" class="toggleA byCity" role="self" title="按起降地">按起降地</a>
+                            <span class="toggleSpan searchBarTogSpan"></span>
+                        </div>
+                        <div id="byNum" class="left">
+                            <label class="byNumLabel left">
+                                <input id="byNumInput" name="byNumInput" type="text" class="bor" maxlength="10" placeholder="请输入航班号，如CA111或1111" autocomplete="off">
+                                <div id="codeFilterBox">
+                                    <ul></ul>
+                                    <p>历史航班号记录</p>
+                                </div>
+                            </label>
+                            <label class="container datepicker_r left">
+                                <div class="text">出发时间</div>
+                                <span class="datepic"></span>
+                                <input type="text" maxlength="10" id="numDatepicker" value="2019-03-15" class="index_date" readonly>
+                                <div class="clear"></div>
+                            </label>
+                            <p class="left">
+                                <input id="byNumBtn" name="byNumBtn" type="button" class="y-btn-grey" value="查&nbsp;询">
+                            </p>
+                        </div>
+                        <div id="byCity" class="left" style="display:none;">
+                            <div class="Citylabel left">
+                                <input type="text" placeholder="出发城市" maxlength="20" onclick="search_input_focus(this)" onblur="search_input_blur()" class="bor autocomplete ac_input ciptbug" data-id="dep_city" id="dep_city" style="color:#000">
+                                <div class="change" id="changeCity"></div>
+                                <input type="text" placeholder="到达城市" maxlength="20" onclick="search_input_focus(this)" onblur="search_input_blur()" class="bor autocomplete ac_input ciptbug" data-id="arr_city" id="arr_city" style="color:#000">
+                                <div id="cityFilterBox">
+	<div class="cityFilterWrap">
+		<div class="cityFilterIn">
+			<div class="cityFilterHead">
+				<ul class="clearfix">
+					<li class="cur">热门</li>
+					<li>ABCD</li>
+					<li>EFGH</li>
+					<li>JKLM</li>
+					<li>NOPQRS</li>
+					<li>TUVWX</li>
+					<li>YZ</li>
+					<li id="hotOutTog">国际热门</li>
+				</ul>
+			</div>
+			<div class="cityFilterTable" id="cityFilterTable">
+				<div class="cityFilterHot">
+					<ul></ul>
+				</div>
+				<div class="cityFilterByAD">
+					<ul></ul>
+				</div>
+				<div class="cityFilterByEH">
+					<ul></ul>
+				</div>
+				<div class="cityFilterByJM">
+					<ul></ul>
+				</div>
+				<div class="cityFilterByNS">
+					<ul></ul>
+				</div>
+				<div class="cityFilterByTX">
+					<ul></ul>
+				</div>
+				<div class="cityFilterByYZ">
+					<ul></ul>
+				</div>
+			</div>
+		</div>
+		<div class="cityFilterOut">
+			<div class="cityFilterHead">
+				<ul class="clearfix">
+					<li class="cur">国际热门</li>
+					<li>亚洲</li>
+					<li>欧洲</li>
+					<li>美洲</li>
+					<li>非洲</li>
+					<li>大洋洲</li>
+					<li id="hotInTog">国内热门</li>
+				</ul>
+			</div>
+			<div class="cityFilterTable" id="cityFilterTable2">
+				<div class="cityFilterByOuthot clearfix"></div>
+				<div class="cityFilterByAsia clearfix"></div>
+				<div class="cityFilterByEurope clearfix"></div>
+				<div class="cityFilterByAmerica clearfix"></div>
+				<div class="cityFilterByAfrica clearfix"></div>
+				<div class="cityFilterByOceania clearfix"></div>
+			</div>
+		</div>
+	</div>
+	<div class="history_city">
+	    <div class="history_city_tit">
+	        <div class="history_city_tit_line"></div>
+	        <div class="history_city_tit_txt">历史起降地记录</div>
+	    </div>
+	    <div class="history_city_table" id="history_city_table">
+	        <ul></ul>
+	    </div>
+	</div>
+	<div class="history_code">
+	    <ul></ul>
+	</div>
+</div>                                <div class="clear"></div>
+                            </div>
+                            <label class="container left datepicker_l">
+                                <div class="text">出发时间</div>
+                                <span class="datepic"></span>
+                                <input type="text" maxlength="10" id="cityDatepicker" value="2019-03-15" class="index_date" readonly>
+                                <div class="clear"></div>
+                            </label>
+                            <p class="left">
+                                <input id="byCityBtn" name="byCityBtn" type="button" class="y-btn-grey" value="查&nbsp;询">
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="downAppI">
+                    <span onclick="window.open(getUrl('download'))"><img src="/_newstatic/dest/img/down_app.png">飞常准APP下载</span>
+                </div>
+            </div>
+        <hr>
+        </div>
+</html>
